@@ -56,3 +56,23 @@ const isDuplicate: boolean = userService.Exists(user)
 
 도메인 서비스를 남용하면 데이터와 행위가 단절돼 로직이 흩어지기 쉽다.\
 로직이 흩어지면 소프트웨어가 변화에 대응하는 유연성이 저해된다.
+
+## 리포지토리
+
+리포지토리는 데이터를 저장하고 복원하는 처리를 추상화하는 객체다.\
+객체 인스턴스를 저장할 때는 데이터스토어에 기록하는 처리를 직접 실행하는 대신 리포지토리 객체에 저장을 맡기면 된다.
+
+### How To Create
+
+* 리포지토리는 인터페이스로 정의된다.
+* 리포지토리의 책임은 객체의 퍼시스턴스 까지다. 
+
+* 인터페이스를 다루는 데이터베이스에 따라 구현한다. 리포지토리의 구현 클래스라면 특정 기술에 의존하는 구현도 문제가 없다.
+
+이렇게 구현된 리포지토리는 생성자 메서드를 통해 Program 클래스에 전달된다.
+
+```ts
+const userRepository = new UserRespository()
+const program = new Program(userRepository)
+program.createUser('jk')
+```
