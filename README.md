@@ -84,3 +84,5 @@ program.createUser('jk')
 유스케이스를 구현하는 객체. 도메인 객체를 조작해서 이용자의 목적을 달성하게 이끈다. 
 
 ![application service diagram](./images/app-service.png)
+
+* 도메인 객체의 행동을 호출하는 것은 애플리케이션 서비스의 책임이다.
