@@ -78,3 +78,9 @@ const userRepository = new UserRespository()
 const program = new Program(userRepository)
 program.createUser('jk')
 ```
+
+## 애플리케이션 서비스
+
+유스케이스를 구현하는 객체. 도메인 객체를 조작해서 이용자의 목적을 달성하게 이끈다. 
+
+![application service diagram](./images/app-service.png)
