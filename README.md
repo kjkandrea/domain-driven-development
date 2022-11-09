@@ -124,3 +124,11 @@ class UserApplicationService {
     }
 }
 ```
+
+추상 타입을 도입하면 `UserApplicationService` 와 `UserRepository` 두 클래스 모두 추상 타입인
+`IUserRepository` 를 향한 의존 관계를 갖는다.
+
+높은 추상화 수준의 모듈 (UserApplicationService) 이 낮은 추상화 수준의 모듈 (UserRepository) 에
+의존하는 상황도 해소되고 '두 모듈 모두 추상 타입에 의존할 것' 이라는 원칙도 지켜진다.
+
+**본래 구상 타입의 구현에 의존하던 것이 추상 타입을 의존하게 되면서 의존 관계가 역전된다.**
