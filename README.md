@@ -95,3 +95,32 @@ program.createUser('jk')
 
 애플리케이션 서비스는 도메인 객체가 수행하는 태스크를 조율하는 데만 전념해야 한다.\
 따라서 애플리케이션 서비스에 도메인 규칙을 기술해서는 안 된다. 도메인 규칙은 도메인 서비스에서 기술한다.
+
+## 의존 관계 제어
+
+### 추상 타입에 의존하라
+
+의존 관계 역전 원칙(Dependency Inversion Principle) 은 다음과 같이 정의된다.
+
+* 추상화 수준이 높은 모듈이 낮은 모듈에 의존해서는 안 되며 두 모듈 모두 추상타입에 의존해야 한다.
+* 추상 타입이 구현의 세부 사항에 의존해서는 안 된다. 구현의 세부 사항이 추상 타입에 의존해야 한다.
+
+```ts
+interface IUserRepository {
+    save: () => void
+}
+
+class UserApplicationService {
+    // 인스턴스 변수의 타입은 인터페이스로 한다.
+    private readonly userRepository: IUserRepository;
+    
+    // 생성자 메서드에서 받는 인자의 타입도 인터페이스로 한다.
+    constructor(userRepository: IUserRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    private save() {
+        this.userRepository.save()
+    }
+}
+```
