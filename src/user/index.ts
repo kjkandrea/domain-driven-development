@@ -1,5 +1,13 @@
-import {FullName, FirstName, LastName} from './values';
+import {FullName, FirstName, LastName, UserId} from './values';
+import {User} from './User';
 
-const fullName = new FullName(new FirstName('ka'), new LastName('renin'));
+const user = new User(
+  new UserId('a'),
+  new FullName(new FirstName('Alexei'), new LastName('Karenin'))
+);
 
-console.log(fullName.toString());
+user.changeFullName(
+  new FullName(new FirstName('Anna'), new LastName('Karenina'))
+);
+
+console.log(user);
