@@ -1,6 +1,6 @@
 // 엔티티.
 import {FullName} from './values';
-import {UserId} from './values/UserId';
+import {UserId} from './values';
 
 export class User {
   private readonly userId: UserId;
