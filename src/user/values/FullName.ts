@@ -1,5 +1,6 @@
 import {ConstructorExceptionError} from 'global/error';
 
+// 값 객체
 export class FullName {
   private readonly firstName: FirstName;
   private readonly lastName: LastName;
@@ -18,6 +19,7 @@ abstract class Name {
   private readonly value: string;
 
   protected constructor(value: string) {
+    // 값 객체는 준수해야 할 규칙을 강제할 수 있다.
     if (!value.trim()) {
       throw new ConstructorExceptionError('빈 값');
     }

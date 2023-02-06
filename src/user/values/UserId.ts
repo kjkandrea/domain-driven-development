@@ -1,5 +1,6 @@
 import {ConstructorExceptionError} from 'global/error';
 
+// 값 객체
 export class UserId {
   private readonly value: string;
 
