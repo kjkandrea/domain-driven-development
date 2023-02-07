@@ -1,7 +1,23 @@
 import {verbose} from 'sqlite3';
-import * as path from 'path';
+import {UserName} from "user/values";
 
 const sqlite3 = verbose();
-const dbPath = path.resolve('chinook.db');
+const db = new sqlite3.Database('./my.db');
 
-export const database = new sqlite3.Database(dbPath);
+export class Program {
+  private db = db;
+
+  public createUser(name: UserName, next: (...args: any[]) => void) {
+    this.createUserTable(() => {
+      this.db.run(`INSERT INTO User (name) VALUES ('${name.getValue()}')`, next)
+    })
+  }
+
+  public reset() {
+    this.db.run('DROP TABLE IF EXISTS User')
+  }
+
+  private createUserTable(next: () => void) {
+    db.run("CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, name TEXT)", next)
+  }
+}

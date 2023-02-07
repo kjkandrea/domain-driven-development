@@ -1,4 +1,4 @@
 import './user/index.ts';
-import {database} from './repositories';
+import {Program} from "repositories";
 
-console.log(database);
+new Program()

@@ -1,19 +1,5 @@
 import {ConstructorExceptionError} from 'global/error';
 
-// 값 객체
-export class FullName {
-  private readonly firstName: FirstName;
-  private readonly lastName: LastName;
-
-  constructor(firstName: FirstName, lastName: LastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  public toString(): string {
-    return this.firstName.getValue() + ' ' + this.lastName.getValue();
-  }
-}
 
 abstract class Name {
   private readonly value: string;
@@ -43,17 +29,7 @@ abstract class Name {
   protected abstract isInvalidLength(value: string): boolean;
 }
 
-export class FirstName extends Name {
-  constructor(value: string) {
-    super(value);
-  }
-
-  protected isInvalidLength(value: string): boolean {
-    return 1 > value.length;
-  }
-}
-
-export class LastName extends Name {
+export class UserName extends Name {
   constructor(value: string) {
     super(value);
   }

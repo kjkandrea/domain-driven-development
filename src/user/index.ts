@@ -1,13 +1,5 @@
-import {FullName, FirstName, LastName, UserId} from './values';
-import {User} from './User';
+import {UserName} from './values';
+import {Program} from "repositories";
 
-const user = new User(
-  new UserId('a'),
-  new FullName(new FirstName('Alexei'), new LastName('Karenin'))
-);
-
-user.changeFullName(
-  new FullName(new FirstName('Anna'), new LastName('Karenina'))
-);
-
-console.log(user);
+const program = new Program()
+program.createUser(new UserName('karenin'), console.log)
