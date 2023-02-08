@@ -13,6 +13,10 @@ export class Program {
     })
   }
 
+  public existUserName(name: UserName) {
+    this.db.all(`SELECT EXISTS(SELECT 1 FROM User WHERE name="${name.getValue()}")`, console.log)
+  }
+
   public reset() {
     this.db.run('DROP TABLE IF EXISTS User')
   }
