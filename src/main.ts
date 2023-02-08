@@ -1,5 +1,5 @@
 import './user/index.ts';
-import {db} from "repositories";
+import {db} from "db";
 import {UserName} from "user/values";
 import {ExistError} from "global/error";
 
