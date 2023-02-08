@@ -1,5 +1,5 @@
 import {UserName} from 'user/values';
-import {UserId} from "user/values/UserId";
+import {UserId} from 'user/values/UserId';
 
 // 엔티티.
 export class User {
@@ -11,8 +11,15 @@ export class User {
     this.userId = userId ?? new UserId(-1);
   }
 
-  public getUserName() {
-    return this.userName
+  public getUserName(): UserName {
+    return this.userName;
+  }
+
+  public getValues() {
+    return {
+      userName: this.userName.getValue(),
+      userId: this.userId.getValue(),
+    };
   }
 
   // 엔티티는 필요에 따라 속성을 가변으로 만든다.

@@ -1,6 +1,5 @@
 import {ConstructorExceptionError} from 'global/error';
 
-
 abstract class Name {
   private readonly value: string;
 
