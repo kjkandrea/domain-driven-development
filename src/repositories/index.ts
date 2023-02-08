@@ -1,5 +1,6 @@
 import {verbose} from 'sqlite3';
 import {UserName} from "user/values";
+import {ExistError} from "global/error";
 
 const sqlite3 = verbose();
 const db = new sqlite3.Database('./my.db');
@@ -7,21 +8,28 @@ const db = new sqlite3.Database('./my.db');
 export class Program {
   private db = db;
 
-  public createUser(name: UserName, next: (...args: any[]) => void) {
-    this.createUserTable(() => {
-      this.db.run(`INSERT INTO User (name) VALUES ('${name.getValue()}')`, next)
-    })
+  public async createUser(name: UserName): Promise<void> {
+    await this.createUserTable();
+    const allReadyExist = await this.existUserName(name)
+    if (allReadyExist) throw new ExistError('이미 존재하는 UserName 입니다.')
+    return new Promise(resolve => {
+      this.db.run(`INSERT INTO User (name) VALUES ('${name.getValue()}')`, () => resolve())
+    });
   }
 
-  public existUserName(name: UserName) {
-    this.db.all(`SELECT EXISTS(SELECT 1 FROM User WHERE name="${name.getValue()}")`, console.log)
+  private existUserName(name: UserName): Promise<boolean> {
+    return new Promise(resolve => this.db.all(`SELECT EXISTS(SELECT 1 FROM User WHERE name="${name.getValue()}")`, (_, result: [{ [query: string]: number }]) => {
+      const resultCount = Object.values(result[0])[0]
+      resolve(resultCount > 0)
+    }))
+
   }
 
   public reset() {
     this.db.run('DROP TABLE IF EXISTS User')
   }
 
-  private createUserTable(next: () => void) {
-    db.run("CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, name TEXT)", next)
+  private createUserTable(): Promise<void> {
+    return new Promise(resolve => db.run("CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, name TEXT)", () => resolve()));
   }
 }
