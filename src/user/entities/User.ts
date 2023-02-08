@@ -1,14 +1,14 @@
 import {UserName} from 'user/values';
-import {UserId} from 'user/values';
+import {UserId} from "user/values/UserId";
 
 // 엔티티.
 export class User {
-  private readonly userId: UserId;
   private userName: UserName;
+  private readonly userId: UserId;
 
-  constructor(userId: UserId, fullName: UserName) {
-    this.userId = userId;
-    this.userName = fullName;
+  constructor(userName: UserName, userId?: UserId) {
+    this.userName = userName;
+    this.userId = userId ?? new UserId(-1);
   }
 
   public getUserName() {

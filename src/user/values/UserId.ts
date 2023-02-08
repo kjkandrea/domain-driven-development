@@ -1,13 +1,8 @@
-import {ConstructorExceptionError} from 'global/error';
-
 // 값 객체
 export class UserId {
-  private readonly value: string;
+  private readonly value: number;
 
-  constructor(value: string) {
-    if (!value.trim()) {
-      throw new ConstructorExceptionError('빈 값');
-    }
+  constructor(value: number) {
     this.value = value;
   }
 }

@@ -2,26 +2,26 @@ import './user/index.ts';
 import {db} from "db";
 import {UserName} from "user/values";
 import {ExistError} from "global/error";
+import {UserService} from "user/services/UserService";
+import {UserRepository} from "user/repositories/UserRepository";
+import {User} from "user/entities/User";
 
 export class Program {
   private db = db;
 
-  public async createUser(name: UserName): Promise<void> {
+  public async createUser(userName: string): Promise<void> {
     await this.createUserTable();
-    const allReadyExist = await this.existUserName(name)
+
+    const user = new User(new UserName(userName))
+    const userService = new UserService(new UserRepository())
+
+    const allReadyExist = await userService.exists(user)
     if (allReadyExist) throw new ExistError('이미 존재하는 UserName 입니다.')
     return new Promise(resolve => {
-      this.db.run(`INSERT INTO User (name) VALUES ('${name.getValue()}')`, () => resolve())
+      this.db.run(`INSERT INTO User (name) VALUES ('${user.getUserName().getValue()}')`, () => resolve())
     });
   }
 
-  private existUserName(name: UserName): Promise<boolean> {
-    return new Promise(resolve => this.db.all(`SELECT EXISTS(SELECT 1 FROM User WHERE name="${name.getValue()}")`, (_, result: [{ [query: string]: number }]) => {
-      const resultCount = Object.values(result[0])[0]
-      resolve(resultCount > 0)
-    }))
-
-  }
 
   public reset() {
     this.db.run('DROP TABLE IF EXISTS User')
@@ -33,6 +33,6 @@ export class Program {
 }
 
 const program = new Program()
-program.createUser(new UserName('karenin')).then(console.log)
+program.createUser('karenin').then(console.log)
 
 
