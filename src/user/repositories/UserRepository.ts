@@ -1,4 +1,4 @@
-import {User} from "user/User";
+import {User} from "user/entities/User";
 import {UserName} from "user/values";
 
 export interface IUserRepository {

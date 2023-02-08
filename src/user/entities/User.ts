@@ -1,5 +1,5 @@
-import {UserName} from './values';
-import {UserId} from './values';
+import {UserName} from 'user/values';
+import {UserId} from 'user/values';
 
 // 엔티티.
 export class User {
