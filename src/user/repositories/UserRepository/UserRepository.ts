@@ -8,7 +8,7 @@ export class UserRepository implements IUserRepository {
   private db = db;
 
   public async save(user: User): Promise<void> {
-    const prevUser = await this.findByName(user.getUserName());
+    const prevUser = await this.findById(user.getUserId());
     const exist = prevUser !== null;
 
     return new Promise(resolve =>

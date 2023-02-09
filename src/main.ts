@@ -2,12 +2,21 @@ import {UserRepository} from 'user/repositories/UserRepository';
 import {UserService} from 'user/services/UserService';
 import {UserApplicationService} from 'UserApplicationService';
 
-const userRepository = new UserRepository();
-const program = new UserApplicationService(
-  userRepository,
-  new UserService(userRepository)
-);
+async function main() {
+  const userRepository = new UserRepository();
 
-// program.register('karenina').then(console.log);
+  const program = new UserApplicationService(
+    userRepository,
+    new UserService(userRepository)
+  );
 
-program.get(1).then(console.log);
+  const user = await program.get(1);
+  if (!user) return;
+  await program.update({
+    ...user,
+    name: 'kareninano',
+  });
+  program.get(1).then(console.log);
+}
+
+main();
