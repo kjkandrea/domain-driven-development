@@ -14,7 +14,7 @@ export class InMemoryUserRepository implements IUserRepository {
 
   public find(userName: UserName): Promise<User | null> {
     const target = [...this.store.values()].find(
-      user => user.getValues().userName === userName.getValue()
+      user => user.getValues().name === userName.getValue()
     );
 
     return new Promise(resolve => resolve(target ? this.clone(target) : null));

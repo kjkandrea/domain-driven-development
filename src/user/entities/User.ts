@@ -21,8 +21,8 @@ export class User {
 
   public getValues() {
     return {
-      userName: this.userName.getValue(),
-      userId: this.userId.getValue(),
+      name: this.userName.getValue(),
+      id: this.userId.getValue(),
     };
   }
 

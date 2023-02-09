@@ -14,8 +14,8 @@ export class UserRepository implements IUserRepository {
       exist
         ? this.db.run(
             `UPDATE users
-              SET name = "${user.getValues().userName}"
-              WHERE id = "${user.getValues().userId}"
+              SET name = "${user.getValues().name}"
+              WHERE id = "${user.getValues().id}"
             `,
             () => resolve()
           )
