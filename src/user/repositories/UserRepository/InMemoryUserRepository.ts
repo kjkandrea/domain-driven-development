@@ -1,6 +1,7 @@
 import type {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
-import {UserName, UserId} from 'user/values';
+import {UserName, UserId, UserData} from 'user/values';
+import {ObjectValue} from 'global/abstracts/ObjectValue';
 
 export class InMemoryUserRepository implements IUserRepository {
   private store: Map<UserId, User> = new Map();
@@ -12,19 +13,20 @@ export class InMemoryUserRepository implements IUserRepository {
     });
   }
 
-  // TODO : 중복 리팩터링
   public findByName(userName: UserName): Promise<User | null> {
-    const target = [...this.store.values()].find(
-      user => user.getValues().name === userName.getValue()
-    );
-
-    return new Promise(resolve => resolve(target ? this.clone(target) : null));
+    return this.findBy('name', userName);
   }
 
-  // TODO : 중복 리팩터링
   public findById(userId: UserId): Promise<User | null> {
+    return this.findBy('id', userId);
+  }
+
+  private findBy<ValueType>(
+    key: keyof UserData,
+    objectValue: ObjectValue<ValueType>
+  ): Promise<User | null> {
     const target = [...this.store.values()].find(
-      user => user.getValues().id === userId.getValue()
+      user => user.getValues()[key] === objectValue.getValue()
     );
 
     return new Promise(resolve => resolve(target ? this.clone(target) : null));
