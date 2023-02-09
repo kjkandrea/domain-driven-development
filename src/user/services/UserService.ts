@@ -9,9 +9,8 @@ export class UserService {
   }
 
   public exists(user: User): Promise<boolean> {
-    return this.userRepository.find(user.getUserName()).then(user => {
-      console.log(user);
-      return user !== null;
-    });
+    return this.userRepository
+      .find(user.getUserName())
+      .then(user => user !== null);
   }
 }

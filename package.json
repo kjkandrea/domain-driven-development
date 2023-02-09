@@ -11,7 +11,7 @@
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "posttest": "npm run lint",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
