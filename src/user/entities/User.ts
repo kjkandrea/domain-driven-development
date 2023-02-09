@@ -15,6 +15,10 @@ export class User {
     return this.userName;
   }
 
+  public getUserId(): UserId {
+    return this.userId;
+  }
+
   public getValues() {
     return {
       userName: this.userName.getValue(),

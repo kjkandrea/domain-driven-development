@@ -1,7 +1,7 @@
 import {User} from 'user/entities/User';
 import {UserName, UserId} from 'user/values';
 import {db} from 'db';
-import type {IUserRepository} from 'user/repositories/UserRepository/IUserRepository';
+import type {IUserRepository} from 'user/repositories/UserRepository';
 
 export class UserRepository implements IUserRepository {
   private db = db;
