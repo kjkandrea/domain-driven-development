@@ -22,14 +22,12 @@ export class UserApplicationService {
   }
 
   public async get(userId: number): Promise<UserData | null> {
-    const targetId = new UserId(userId);
-    const user = await this.userRepository.findById(targetId);
+    const user = await this.getUser(userId);
     return user?.getValues() ?? null;
   }
 
   public async update(userData: UserData): Promise<void> {
-    const targetId = new UserId(userData.id);
-    const user = await this.userRepository.findById(targetId);
+    const user = await this.getUser(userData.id);
     if (user === null) {
       throw new NotFoundError('해당 user 를 찾을 수 없습니다.');
     }
@@ -42,5 +40,21 @@ export class UserApplicationService {
     }
 
     return this.userRepository.save(user);
+  }
+
+  public async delete(userId: number): Promise<void> {
+    const user = await this.getUser(userId);
+
+    if (user === null) {
+      // 탈퇴 대상 사용자가 발견되지 않았다면 탈퇴 처리 성공으로 간주한다.
+      return;
+    }
+
+    return this.userRepository.delete(user);
+  }
+
+  private getUser(userId: number): Promise<User | null> {
+    const targetId = new UserId(userId);
+    return this.userRepository.findById(targetId);
   }
 }
