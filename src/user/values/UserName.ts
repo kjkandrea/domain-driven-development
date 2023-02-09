@@ -1,9 +1,9 @@
 import {ConstructorExceptionError} from 'global/error';
+import {ObjectValue} from 'global/abstracts/ObjectValue';
 
-abstract class Name {
-  private readonly value: string;
-
+abstract class Name extends ObjectValue<string> {
   protected constructor(value: string) {
+    super(value);
     // 값 객체는 준수해야 할 규칙을 강제할 수 있다.
     if (!value.trim()) {
       throw new ConstructorExceptionError('빈 값');
@@ -14,11 +14,6 @@ abstract class Name {
     if (this.isInvalidLength(value)) {
       throw new ConstructorExceptionError('길이가 다름');
     }
-    this.value = value;
-  }
-
-  public getValue(): string {
-    return this.value;
   }
 
   private isInvalidWord(value: string): boolean {
