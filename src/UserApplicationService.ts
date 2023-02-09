@@ -18,7 +18,7 @@ export class UserApplicationService {
     const user = new User(new UserName(userName));
 
     const allReadyExist = await this.userService.exists(user);
-    if (allReadyExist) throw new ExistError('이미 존재하는 UserName 입니다.');
+    if (allReadyExist) throw new ExistError('이미 존재하는 user 입니다.');
     return this.userRepository.save(user);
   }
 
@@ -37,7 +37,7 @@ export class UserApplicationService {
     user.changeName(userName);
     const hasExist = await this.userService.exists(user);
     if (hasExist) {
-      throw new ExistError('이미 존재하는 UserName 입니다.');
+      throw new ExistError('이미 존재하는 user 입니다.');
     }
 
     return this.userRepository.save(user);
