@@ -1,14 +1,7 @@
 import {User} from 'user/entities/User';
 import {UserName, UserId} from 'user/values';
 import {db} from 'db';
-
-export interface IUserRepository {
-  save(user: User): Promise<void>;
-  find(userName: UserName): Promise<User | null>;
-
-  // 레포지토리의 책임은 퍼시스턴시 까지이다. 사용자명의 중복 확인은 도메인 규칙에 가깝다.
-  // exists(user: User): Promise<boolean>
-}
+import type {IUserRepository} from 'user/repositories/UserRepository/IUserRepository';
 
 export class UserRepository implements IUserRepository {
   private db = db;
@@ -51,6 +44,7 @@ export class UserRepository implements IUserRepository {
     );
   }
 
+  // table 정리용
   // public reset() {
   //   this.db.run('DROP TABLE IF EXISTS users');
   // }
