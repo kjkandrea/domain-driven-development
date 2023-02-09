@@ -1,4 +1,4 @@
-import {UserApplicationService} from 'UserApplicationService';
+import {UserApplicationService} from 'application/UserApplicationService/UserApplicationService';
 import {InMemoryUserRepository} from 'user/repositories/UserRepository/InMemoryUserRepository';
 import {User} from 'user/entities/User';
 import {UserName, UserId} from 'user/values';

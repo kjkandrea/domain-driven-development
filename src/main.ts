@@ -1,6 +1,6 @@
 import {UserRepository} from 'user/repositories/UserRepository';
 import {UserService} from 'user/services/UserService';
-import {UserApplicationService} from 'UserApplicationService';
+import {UserApplicationService} from 'application/UserApplicationService/UserApplicationService';
 
 async function main() {
   const userRepository = new UserRepository();
