@@ -1,5 +1,5 @@
 import {UserRepository} from 'user/repositories/UserRepository';
-import {Program} from 'Program';
+import {UserApplicationService} from 'UserApplicationService';
 
-const program = new Program(new UserRepository());
+const program = new UserApplicationService(new UserRepository());
 program.createUser('karenina').then(console.log);

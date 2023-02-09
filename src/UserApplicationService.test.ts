@@ -1,10 +1,10 @@
-import {Program} from 'Program';
+import {UserApplicationService} from 'UserApplicationService';
 import {InMemoryUserRepository} from 'user/repositories/UserRepository/InMemoryUserRepository';
 import {UserName} from 'user/values';
 
-describe('Program', () => {
+describe('UserApplicationService', () => {
   const userRepository = new InMemoryUserRepository();
-  const program = new Program(userRepository);
+  const program = new UserApplicationService(userRepository);
 
   test('유저를 생성한 후 해당 유저를 레포지토리에서 읽을 수 있다.', async () => {
     const USER_NAME_VALUE = 'karenin';

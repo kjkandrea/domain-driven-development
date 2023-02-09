@@ -4,7 +4,7 @@ import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
 
-export class Program {
+export class UserApplicationService {
   private readonly userRepository: IUserRepository;
 
   constructor(userRepository: IUserRepository) {
