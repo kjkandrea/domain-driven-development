@@ -4,18 +4,18 @@ import {UserName, UserId, UserData} from 'user/values';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
 
 export class InMemoryUserRepository implements IUserRepository {
-  private store: Map<UserId, User> = new Map();
+  private store: Map<UserData['id'], User> = new Map();
 
   public save(user: User): Promise<void> {
     return new Promise(resolve => {
-      this.store.set(user.getUserId(), this.clone(user));
+      this.store.set(user.getValues().id, this.clone(user));
       resolve();
     });
   }
 
   public delete(user: User): Promise<void> {
     return new Promise(resolve => {
-      this.store.delete(user.getUserId());
+      this.store.delete(user.getValues().id);
       resolve();
     });
   }

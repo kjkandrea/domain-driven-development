@@ -47,4 +47,12 @@ describe('UserApplicationService', () => {
       NEW_USER_DATA
     );
   });
+
+  test('id 를 통해 저장된 유저의 정보를 삭제할 수 있다.', async () => {
+    const user = new User(new UserName(USER_NAME_VALUE), new UserId(USER_ID));
+
+    await userRepository.save(user);
+    await userApplicationService.delete(USER_ID);
+    await expect(userApplicationService.get(USER_ID)).resolves.toBeNull();
+  });
 });
