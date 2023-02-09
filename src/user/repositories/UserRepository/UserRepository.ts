@@ -7,7 +7,7 @@ export class UserRepository implements IUserRepository {
   private db = db;
 
   public async save(user: User): Promise<void> {
-    const prevUser = await this.find(user.getUserName());
+    const prevUser = await this.findByName(user.getUserName());
     const exist = prevUser !== null;
 
     return new Promise(resolve =>
@@ -28,10 +28,28 @@ export class UserRepository implements IUserRepository {
     );
   }
 
-  public async find(userName: UserName): Promise<User | null> {
+  // TODO : 중복 리팩터링
+  public async findByName(userName: UserName): Promise<User | null> {
     return new Promise(resolve =>
       this.db.all(
         `SELECT * FROM users WHERE name="${userName.getValue()}"`,
+        (_, [user]) => {
+          if (!user) {
+            resolve(null);
+            return;
+          }
+          const {name, id} = user;
+          resolve(new User(new UserName(name), new UserId(id)));
+        }
+      )
+    );
+  }
+
+  // TODO : 중복 리팩터링
+  public findById(userId: UserId): Promise<User | null> {
+    return new Promise(resolve =>
+      this.db.all(
+        `SELECT * FROM users WHERE id="${userId.getValue()}"`,
         (_, [user]) => {
           if (!user) {
             resolve(null);

@@ -12,7 +12,9 @@ describe('UserApplicationService', () => {
     const USER_NAME_VALUE = 'karenin';
 
     await program.register(USER_NAME_VALUE);
-    const result = await userRepository.find(new UserName(USER_NAME_VALUE));
+    const result = await userRepository.findByName(
+      new UserName(USER_NAME_VALUE)
+    );
     expect(result?.getValues().name).toBe(USER_NAME_VALUE);
   });
 });

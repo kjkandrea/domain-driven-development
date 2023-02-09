@@ -1,4 +1,4 @@
-import {UserName} from 'user/values';
+import {UserData, UserId, UserName} from 'user/values';
 import {ExistError} from 'global/error';
 import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
@@ -19,5 +19,11 @@ export class UserApplicationService {
     const allReadyExist = await this.userService.exists(user);
     if (allReadyExist) throw new ExistError('이미 존재하는 UserName 입니다.');
     return this.userRepository.save(user);
+  }
+
+  public async get(userId: number): Promise<UserData | null> {
+    const targetId = new UserId(userId);
+    const user = await this.userRepository.findById(targetId);
+    return user?.getValues() ?? null;
   }
 }

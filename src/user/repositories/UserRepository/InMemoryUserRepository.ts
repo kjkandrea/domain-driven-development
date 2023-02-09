@@ -12,9 +12,19 @@ export class InMemoryUserRepository implements IUserRepository {
     });
   }
 
-  public find(userName: UserName): Promise<User | null> {
+  // TODO : 중복 리팩터링
+  public findByName(userName: UserName): Promise<User | null> {
     const target = [...this.store.values()].find(
       user => user.getValues().name === userName.getValue()
+    );
+
+    return new Promise(resolve => resolve(target ? this.clone(target) : null));
+  }
+
+  // TODO : 중복 리팩터링
+  public findById(userId: UserId): Promise<User | null> {
+    const target = [...this.store.values()].find(
+      user => user.getValues().id === userId.getValue()
     );
 
     return new Promise(resolve => resolve(target ? this.clone(target) : null));
