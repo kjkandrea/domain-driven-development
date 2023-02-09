@@ -3,6 +3,7 @@ import {UserId, UserName} from 'user/values';
 
 export interface IUserRepository {
   save(user: User): Promise<void>;
+  delete(user: User): Promise<void>;
   findByName(userName: UserName): Promise<User | null>;
   findById(userId: UserId): Promise<User | null>;
 

@@ -29,6 +29,14 @@ export class UserRepository implements IUserRepository {
     );
   }
 
+  public delete(user: User): Promise<void> {
+    return new Promise(resolve =>
+      this.db.run(`DELETE FROM users WHERE id=${user.getValues().id}`, () =>
+        resolve()
+      )
+    );
+  }
+
   public async findByName(userName: UserName): Promise<User | null> {
     return this.findBy('name', userName);
   }

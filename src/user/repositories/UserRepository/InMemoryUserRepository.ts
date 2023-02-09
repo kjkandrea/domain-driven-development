@@ -13,6 +13,13 @@ export class InMemoryUserRepository implements IUserRepository {
     });
   }
 
+  public delete(user: User): Promise<void> {
+    return new Promise(resolve => {
+      this.store.delete(user.getUserId());
+      resolve();
+    });
+  }
+
   public findByName(userName: UserName): Promise<User | null> {
     return this.findBy('name', userName);
   }
