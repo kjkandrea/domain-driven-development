@@ -7,4 +7,7 @@ const program = new UserApplicationService(
   userRepository,
   new UserService(userRepository)
 );
-program.register('karenina').then(console.log);
+
+// program.register('karenina').then(console.log);
+
+program.get(1).then(console.log);
