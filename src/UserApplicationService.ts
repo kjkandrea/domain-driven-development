@@ -4,6 +4,7 @@ import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
 
+// 응집도 관점에서 보았을때에 바람직한 상태가 아니다.
 export class UserApplicationService {
   private readonly userRepository: IUserRepository;
   private readonly userService: UserService;
