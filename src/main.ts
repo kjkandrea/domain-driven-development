@@ -1,5 +1,10 @@
 import {UserRepository} from 'user/repositories/UserRepository';
+import {UserService} from 'user/services/UserService';
 import {UserApplicationService} from 'UserApplicationService';
 
-const program = new UserApplicationService(new UserRepository());
-program.createUser('karenina').then(console.log);
+const userRepository = new UserRepository();
+const program = new UserApplicationService(
+  userRepository,
+  new UserService(userRepository)
+);
+program.register('karenina').then(console.log);
