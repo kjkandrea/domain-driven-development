@@ -1,7 +1,8 @@
 import {User} from 'user/entities/User';
-import {UserName, UserId} from 'user/values';
+import {UserName, UserId, UserData} from 'user/values';
 import {db} from 'db';
 import type {IUserRepository} from 'user/repositories/UserRepository';
+import {ObjectValue} from 'global/abstracts/ObjectValue';
 
 export class UserRepository implements IUserRepository {
   private db = db;
@@ -28,28 +29,21 @@ export class UserRepository implements IUserRepository {
     );
   }
 
-  // TODO : 중복 리팩터링
   public async findByName(userName: UserName): Promise<User | null> {
-    return new Promise(resolve =>
-      this.db.all(
-        `SELECT * FROM users WHERE name="${userName.getValue()}"`,
-        (_, [user]) => {
-          if (!user) {
-            resolve(null);
-            return;
-          }
-          const {name, id} = user;
-          resolve(new User(new UserName(name), new UserId(id)));
-        }
-      )
-    );
+    return this.findBy('name', userName);
   }
 
-  // TODO : 중복 리팩터링
   public findById(userId: UserId): Promise<User | null> {
+    return this.findBy('id', userId);
+  }
+
+  private findBy<ValueType>(
+    key: keyof UserData,
+    objectValue: ObjectValue<ValueType>
+  ): Promise<User | null> {
     return new Promise(resolve =>
       this.db.all(
-        `SELECT * FROM users WHERE id="${userId.getValue()}"`,
+        `SELECT * FROM users WHERE ${key}="${objectValue.getValue()}"`,
         (_, [user]) => {
           if (!user) {
             resolve(null);
