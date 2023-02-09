@@ -17,7 +17,7 @@ export class InMemoryUserRepository implements IUserRepository {
       user => user.getValues().userName === userName.getValue()
     );
 
-    return new Promise(resolve => resolve(target ?? null));
+    return new Promise(resolve => resolve(target ? this.clone(target) : null));
   }
 
   private clone(user: User): User {
