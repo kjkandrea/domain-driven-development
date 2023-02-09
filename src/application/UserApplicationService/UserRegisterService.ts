@@ -4,8 +4,7 @@ import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
 
-// 응집도 관점에서 보았을때에 바람직한 상태가 아니다.
-export class UserApplicationService {
+export class UserRegisterService {
   private readonly userRepository: IUserRepository;
   private readonly userService: UserService;
 
@@ -41,17 +40,6 @@ export class UserApplicationService {
     }
 
     return this.userRepository.save(user);
-  }
-
-  public async delete(userId: number): Promise<void> {
-    const user = await this.getUser(userId);
-
-    if (user === null) {
-      // 탈퇴 대상 사용자가 발견되지 않았다면 탈퇴 처리 성공으로 간주한다.
-      return;
-    }
-
-    return this.userRepository.delete(user);
   }
 
   private getUser(userId: number): Promise<User | null> {
