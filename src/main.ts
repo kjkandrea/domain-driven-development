@@ -1,23 +1,23 @@
 import 'reflect-metadata';
-import {UserRepository} from 'user/repositories/UserRepository';
 import {
   UserDeleteService,
   UserRegisterService,
 } from 'application/UserApplicationService';
 import {TYPES} from 'types';
-import {serviceCollection} from 'application/WebServer/serviceCollection';
+import {SqlConnectionUserDependencySetup} from 'serviceProvider/SqlConnectionUserDependencySetup';
+import {Container} from 'inversify';
 
 async function main() {
-  const userRepository = new UserRepository();
+  const service = new Container();
+  const userDependencySetup = new SqlConnectionUserDependencySetup();
+  userDependencySetup.run(service);
 
-  // const userRegisterService = new UserRegisterService(
-  //   userRepository,
-  //   new UserService(userRepository)
-  // );
-  const userRegisterService = serviceCollection.get<UserRegisterService>(
+  const userRegisterService = await service.get<UserRegisterService>(
     TYPES.UserRegisterService
   );
-  const userDeleteService = new UserDeleteService(userRepository);
+  const userDeleteService = await service.get<UserDeleteService>(
+    TYPES.UserDeleteService
+  );
 
   const user = await userRegisterService.get(1);
   if (!user) return;
