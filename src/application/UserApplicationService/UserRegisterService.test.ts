@@ -1,16 +1,20 @@
+import 'reflect-metadata';
 import {UserRegisterService} from 'application/UserApplicationService/UserRegisterService';
-import {InMemoryUserRepository} from 'user/repositories/UserRepository/InMemoryUserRepository';
 import {User} from 'user/entities/User';
 import {UserName, UserId} from 'user/values';
-import {UserService} from 'user/services/UserService';
+import {Container} from 'inversify';
+import {InMemoryModuleUserDependencySetup} from 'serviceProvider/InMemoryModuleUserDependencySetup';
+import {TYPES} from 'types';
+import {IUserRepository} from 'user/repositories/UserRepository';
 
 describe('UserRegisterService', () => {
-  const userRepository = new InMemoryUserRepository();
-  const userService = new UserService(userRepository);
-  const userRegisterService = new UserRegisterService(
-    userRepository,
-    userService
+  const service = new Container();
+  const userDependencySetup = new InMemoryModuleUserDependencySetup();
+  userDependencySetup.run(service);
+  const userRegisterService = service.get<UserRegisterService>(
+    TYPES.UserRegisterService
   );
+  const userRepository = service.get<IUserRepository>(TYPES.IUserRepository);
 
   const USER_NAME_VALUE = 'karenin';
   const USER_ID = 1;

@@ -7,7 +7,7 @@ import {injectable, inject} from 'inversify';
 import {TYPES} from 'types';
 
 @injectable()
-export class UserRegisterService {
+class UserRegisterService {
   private readonly userRepository: IUserRepository;
   private readonly userService: UserService;
 
@@ -53,3 +53,5 @@ export class UserRegisterService {
     return this.userRepository.findById(targetId);
   }
 }
+
+export {UserRegisterService};

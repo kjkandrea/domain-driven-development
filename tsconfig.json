@@ -9,7 +9,7 @@
     "outDir": "build",
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "@types/jest"],
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true

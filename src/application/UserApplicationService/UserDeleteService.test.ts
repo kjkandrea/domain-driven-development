@@ -1,11 +1,20 @@
-import {InMemoryUserRepository} from 'user/repositories/UserRepository/InMemoryUserRepository';
+import 'reflect-metadata';
 import {User} from 'user/entities/User';
 import {UserName, UserId} from 'user/values';
 import {UserDeleteService} from 'application/UserApplicationService/UserDeleteService';
+import {Container} from 'inversify';
+import {InMemoryModuleUserDependencySetup} from 'serviceProvider/InMemoryModuleUserDependencySetup';
+import {TYPES} from 'types';
+import {IUserRepository} from 'user/repositories/UserRepository';
 
 describe('UserDeleteService', () => {
-  const userRepository = new InMemoryUserRepository();
-  const userDeleteService = new UserDeleteService(userRepository);
+  const service = new Container();
+  const userDependencySetup = new InMemoryModuleUserDependencySetup();
+  userDependencySetup.run(service);
+  const userDeleteService = service.get<UserDeleteService>(
+    TYPES.UserDeleteService
+  );
+  const userRepository = service.get<IUserRepository>(TYPES.IUserRepository);
 
   const USER_NAME_VALUE = 'karenin';
   const USER_ID = 1;

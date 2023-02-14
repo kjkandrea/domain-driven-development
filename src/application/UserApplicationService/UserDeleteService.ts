@@ -5,7 +5,7 @@ import {injectable, inject} from 'inversify';
 import {TYPES} from 'types';
 
 @injectable()
-export class UserDeleteService {
+class UserDeleteService {
   private readonly userRepository: IUserRepository;
 
   constructor(@inject(TYPES.IUserRepository) userRepository: IUserRepository) {
@@ -28,3 +28,5 @@ export class UserDeleteService {
     return this.userRepository.findById(targetId);
   }
 }
+
+export {UserDeleteService};

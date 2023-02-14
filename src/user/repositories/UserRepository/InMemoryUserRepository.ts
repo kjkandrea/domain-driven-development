@@ -5,7 +5,7 @@ import {ObjectValue} from 'global/abstracts/ObjectValue';
 import {injectable} from 'inversify';
 
 @injectable()
-export class InMemoryUserRepository implements IUserRepository {
+class InMemoryUserRepository implements IUserRepository {
   private store: Map<UserData['id'], User> = new Map();
 
   public save(user: User): Promise<void> {
@@ -45,3 +45,5 @@ export class InMemoryUserRepository implements IUserRepository {
     return new User(user.getUserName(), user.getUserId());
   }
 }
+
+export {InMemoryUserRepository};
