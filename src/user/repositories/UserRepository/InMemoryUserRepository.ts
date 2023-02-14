@@ -2,7 +2,9 @@ import type {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
 import {UserName, UserId, UserData} from 'user/values';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
+import {injectable} from 'inversify';
 
+@injectable()
 export class InMemoryUserRepository implements IUserRepository {
   private store: Map<UserData['id'], User> = new Map();
 

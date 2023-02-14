@@ -1,16 +1,21 @@
+import 'reflect-metadata';
 import {UserRepository} from 'user/repositories/UserRepository';
-import {UserService} from 'user/services/UserService';
 import {
   UserDeleteService,
   UserRegisterService,
 } from 'application/UserApplicationService';
+import {TYPES} from 'types';
+import {serviceCollection} from 'application/WebServer/serviceCollection';
 
 async function main() {
   const userRepository = new UserRepository();
 
-  const userRegisterService = new UserRegisterService(
-    userRepository,
-    new UserService(userRepository)
+  // const userRegisterService = new UserRegisterService(
+  //   userRepository,
+  //   new UserService(userRepository)
+  // );
+  const userRegisterService = serviceCollection.get<UserRegisterService>(
+    TYPES.UserRegisterService
   );
   const userDeleteService = new UserDeleteService(userRepository);
 

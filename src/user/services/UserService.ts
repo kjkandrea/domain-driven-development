@@ -1,10 +1,13 @@
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
+import {injectable, inject} from 'inversify';
+import {TYPES} from 'types';
 
+@injectable()
 export class UserService {
   private userRepository: IUserRepository;
 
-  constructor(userRepository: IUserRepository) {
+  constructor(@inject(TYPES.IUserRepository) userRepository: IUserRepository) {
     this.userRepository = userRepository;
   }
 

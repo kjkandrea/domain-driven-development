@@ -4,6 +4,9 @@ import {db} from 'db';
 import type {IUserRepository} from 'user/repositories/UserRepository';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
 
+import {injectable} from 'inversify';
+
+@injectable()
 export class UserRepository implements IUserRepository {
   private db = db;
 

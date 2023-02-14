@@ -3,12 +3,18 @@ import {ExistError, NotFoundError} from 'global/error';
 import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
+import {injectable, inject} from 'inversify';
+import {TYPES} from 'types';
 
+@injectable()
 export class UserRegisterService {
   private readonly userRepository: IUserRepository;
   private readonly userService: UserService;
 
-  constructor(userRepository: IUserRepository, userService: UserService) {
+  constructor(
+    @inject(TYPES.IUserRepository) userRepository: IUserRepository,
+    @inject(TYPES.UserService) userService: UserService
+  ) {
     this.userRepository = userRepository;
     this.userService = userService;
   }
