@@ -10,7 +10,10 @@ import {UserService} from 'user/services/UserService';
 
 export class InMemoryModuleUserDependencySetup extends UserDependencySetup {
   protected setupRepositories(service: Container) {
-    service.bind(TYPES.IUserRepository).to(InMemoryUserRepository);
+    service
+      .bind(TYPES.IUserRepository)
+      .to(InMemoryUserRepository)
+      .inSingletonScope();
   }
 
   protected setupApplicationService(service: Container) {

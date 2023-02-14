@@ -10,7 +10,7 @@ import {UserService} from 'user/services/UserService';
 
 export class SqlConnectionUserDependencySetup extends UserDependencySetup {
   protected setupRepositories(service: Container) {
-    service.bind(TYPES.IUserRepository).to(UserRepository);
+    service.bind(TYPES.IUserRepository).to(UserRepository).inSingletonScope();
   }
 
   protected setupApplicationService(service: Container) {
