@@ -3,13 +3,13 @@ import {UserRegisterService} from 'application/UserApplicationService/UserRegist
 import {User} from 'user/entities/User';
 import {UserName, UserId} from 'user/values';
 import {Container} from 'inversify';
-import {InMemoryModuleUserDependencySetup} from 'serviceProvider/InMemoryModuleUserDependencySetup';
 import {TYPES} from 'types';
 import {IUserRepository} from 'user/repositories/UserRepository';
+import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
 
 describe('UserRegisterService', () => {
   const service = new Container();
-  const userDependencySetup = new InMemoryModuleUserDependencySetup();
+  const userDependencySetup = userDependancySetupFactory('IN_MEMORY');
   userDependencySetup.run(service);
   const userRegisterService = service.get<UserRegisterService>(
     TYPES.UserRegisterService

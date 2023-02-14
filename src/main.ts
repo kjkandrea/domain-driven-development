@@ -4,12 +4,12 @@ import {
   UserRegisterService,
 } from 'application/UserApplicationService';
 import {TYPES} from 'types';
-import {SqlConnectionUserDependencySetup} from 'serviceProvider/SqlConnectionUserDependencySetup';
 import {Container} from 'inversify';
+import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
 
 async function main() {
   const service = new Container();
-  const userDependencySetup = new SqlConnectionUserDependencySetup();
+  const userDependencySetup = userDependancySetupFactory('SQL_CONNECTION');
   userDependencySetup.run(service);
 
   const userRegisterService = await service.get<UserRegisterService>(
