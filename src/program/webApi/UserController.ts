@@ -29,8 +29,20 @@ export class UserController {
     this.app.get('/users/:userId', (req, res) => {
       const userId = Number(req.params);
       this.userRegisterService.get(userId).then(user => {
-        console.log(user);
-        res.send(user);
+        if (user) {
+          res.send(user);
+        } else {
+          res.status(204);
+          res.send();
+        }
+      });
+    });
+
+    this.app.delete('/users/:userId', (req, res) => {
+      const userId = Number(req.params);
+      this.userDeleteService.delete(userId).then(() => {
+        res.status(204);
+        res.send();
       });
     });
   }
