@@ -22,6 +22,10 @@ class InMemoryUserRepository implements IUserRepository {
     });
   }
 
+  public getAll(): Promise<User[]> {
+    return new Promise(resolve => resolve([...this.store.values()]));
+  }
+
   public findByName(userName: UserName): Promise<User | null> {
     return this.findBy('name', userName);
   }

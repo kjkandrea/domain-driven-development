@@ -36,6 +36,16 @@ describe('UserRegisterService', () => {
     );
   });
 
+  test('저장된 모든 유저의 정보를 조회할 수 있다', async () => {
+    const user = new User(new UserName(USER_NAME_VALUE), new UserId(USER_ID));
+
+    await userRepository.save(user);
+    const result = await userRegisterService.getAll();
+    expect(
+      result.some(({name, id}) => name === USER_NAME_VALUE && id === USER_ID)
+    ).toBe(true);
+  });
+
   test('id 를 통해 저장된 유저의 정보를 수정할 수 있다.', async () => {
     const user = new User(new UserName(USER_NAME_VALUE), new UserId(USER_ID));
 

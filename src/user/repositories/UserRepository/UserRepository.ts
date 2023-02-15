@@ -40,6 +40,18 @@ export class UserRepository implements IUserRepository {
     );
   }
 
+  public getAll(): Promise<User[]> {
+    return new Promise(resolve =>
+      this.db.all('SELECT * FROM users', (_, users) =>
+        resolve(
+          users.map(
+            user => new User(new UserName(user.name), new UserId(user.id))
+          )
+        )
+      )
+    );
+  }
+
   public async findByName(userName: UserName): Promise<User | null> {
     return this.findBy('name', userName);
   }

@@ -32,6 +32,11 @@ class UserRegisterService {
     return user?.getValues() ?? null;
   }
 
+  public async getAll(): Promise<UserData[]> {
+    const users = await this.userRepository.getAll();
+    return users.map(user => user.getValues());
+  }
+
   public async update(userData: UserData): Promise<void> {
     const user = await this.getUser(userData.id);
     if (user === null) {
