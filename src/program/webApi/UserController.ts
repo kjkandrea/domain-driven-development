@@ -22,6 +22,19 @@ export class UserController {
   }
 
   private initHttpRoute() {
+    this.app.post('/users', (req, res) => {
+      this.userRegisterService
+        .register(req.body?.name)
+        .then(() => {
+          res.status(204);
+          res.send();
+        })
+        .catch(error => {
+          res.status(400);
+          res.send(error.message);
+        });
+    });
+
     this.app.get('/users', (_, res) => {
       this.userRegisterService.getAll().then(users => res.send(users));
     });
