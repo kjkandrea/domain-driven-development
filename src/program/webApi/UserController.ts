@@ -27,7 +27,7 @@ export class UserController {
     });
 
     this.app.get('/users/:userId', (req, res) => {
-      const userId = Number(req.params);
+      const userId = Number(req.params.userId);
       this.userRegisterService.get(userId).then(user => {
         if (user) {
           res.send(user);
@@ -38,8 +38,25 @@ export class UserController {
       });
     });
 
+    this.app.put('/users/:userId', (req, res) => {
+      const userId = Number(req.params.userId);
+      this.userRegisterService
+        .update({
+          id: userId,
+          name: req.body?.name,
+        })
+        .then(() => {
+          res.status(204);
+          res.send();
+        })
+        .catch(error => {
+          res.status(400);
+          res.send(error.message);
+        });
+    });
+
     this.app.delete('/users/:userId', (req, res) => {
-      const userId = Number(req.params);
+      const userId = Number(req.params.userId);
       this.userDeleteService.delete(userId).then(() => {
         res.status(204);
         res.send();

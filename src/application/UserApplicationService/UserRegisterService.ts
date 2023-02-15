@@ -54,6 +54,7 @@ class UserRegisterService {
   }
 
   private getUser(userId: number): Promise<User | null> {
+    console.log(userId);
     const targetId = new UserId(userId);
     return this.userRepository.findById(targetId);
   }
