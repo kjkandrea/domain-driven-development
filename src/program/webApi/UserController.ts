@@ -17,5 +17,21 @@ export class UserController {
     this.userRegisterService = userRegisterService;
     this.userDeleteService = userDeleteService;
     this.app = app;
+
+    this.initHttpRoute();
+  }
+
+  private initHttpRoute() {
+    this.app.get('/users', (_, res) => {
+      this.userRegisterService.getAll().then(users => res.send(users));
+    });
+
+    this.app.get('/users/:userId', (req, res) => {
+      const userId = Number(req.params);
+      this.userRegisterService.get(userId).then(user => {
+        console.log(user);
+        res.send(user);
+      });
+    });
   }
 }
