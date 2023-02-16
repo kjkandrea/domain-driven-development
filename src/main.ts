@@ -1,3 +1,3 @@
-import {StartUp} from 'program/webApi/StartUp';
+import {main} from 'playground';
 
-new StartUp();
+main();
