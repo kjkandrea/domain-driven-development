@@ -17,21 +17,16 @@ export class UserRepository implements IUserRepository {
     return new Promise(resolve =>
       exist
         ? this.db.run(
-            `
-              UPDATE users
-                SET name = "${user.getValues().name}"
-                WHERE id = "${user.getValues().id}"
+            `UPDATE users
+              SET name = "${user.getValues().name}"
+              WHERE id = "${user.getValues().id}"
             `,
             () => resolve()
           )
         : this.db.run(
-            `
-                  BEGIN TRANSACTION;
-                    INSERT INTO users (name) VALUES ('${user
-                      .getUserName()
-                      .getValue()}')
-                  COMMIT;
-                `,
+            `INSERT INTO users (name) VALUES ('${user
+              .getUserName()
+              .getValue()}')`,
             () => resolve()
           )
     );
