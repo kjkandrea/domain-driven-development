@@ -19,4 +19,16 @@ export class Circle {
     this.owner = owner;
     this.members = members;
   }
+
+  public getCircleName(): CircleName {
+    return this.circleName;
+  }
+
+  public getCircleId(): CircleId {
+    return this.circleId;
+  }
+
+  public changeCircleName(circleName: CircleName): void {
+    this.circleName = circleName;
+  }
 }
