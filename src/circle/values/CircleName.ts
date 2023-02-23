@@ -2,7 +2,7 @@ import {ConstructorExceptionError} from 'global/error';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
 
 export class CircleName extends ObjectValue<string> {
-  protected constructor(value: string) {
+  constructor(value: string) {
     super(value);
 
     if (!value.trim()) {
