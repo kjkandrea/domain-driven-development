@@ -1,5 +1,5 @@
 import {User} from 'user/entities/User';
-import {UserName, UserId, UserData} from 'user/values';
+import {UserName, UserId, UserLiteral} from 'user/values';
 import {db} from 'db';
 import type {IUserRepository} from 'user/repositories/UserRepository';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
@@ -61,7 +61,7 @@ export class UserRepository implements IUserRepository {
   }
 
   private findBy<ValueType>(
-    key: keyof UserData,
+    key: keyof UserLiteral,
     objectValue: ObjectValue<ValueType>
   ): Promise<User | null> {
     return new Promise(resolve =>

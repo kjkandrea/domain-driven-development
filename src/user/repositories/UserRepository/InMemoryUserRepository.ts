@@ -1,12 +1,12 @@
 import type {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'user/entities/User';
-import {UserName, UserId, UserData} from 'user/values';
+import {UserName, UserId, UserLiteral} from 'user/values';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
 import {injectable} from 'inversify';
 
 @injectable()
 class InMemoryUserRepository implements IUserRepository {
-  private store: Map<UserData['id'], User> = new Map();
+  private store: Map<UserLiteral['id'], User> = new Map();
 
   public save(user: User): Promise<void> {
     return new Promise(resolve => {
@@ -35,7 +35,7 @@ class InMemoryUserRepository implements IUserRepository {
   }
 
   private findBy<ValueType>(
-    key: keyof UserData,
+    key: keyof UserLiteral,
     objectValue: ObjectValue<ValueType>
   ): Promise<User | null> {
     const target = [...this.store.values()].find(

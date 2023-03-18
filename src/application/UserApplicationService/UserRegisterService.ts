@@ -1,4 +1,4 @@
-import {UserData, UserId, UserName} from 'user/values';
+import {UserLiteral, UserId, UserName} from 'user/values';
 import {ExistError, NotFoundError} from 'global/error';
 import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
@@ -27,17 +27,17 @@ class UserRegisterService {
     return this.userRepository.save(user);
   }
 
-  public async get(userId: number): Promise<UserData | null> {
+  public async get(userId: number): Promise<UserLiteral | null> {
     const user = await this.getUser(userId);
     return user?.getValues() ?? null;
   }
 
-  public async getAll(): Promise<UserData[]> {
+  public async getAll(): Promise<UserLiteral[]> {
     const users = await this.userRepository.getAll();
     return users.map(user => user.getValues());
   }
 
-  public async update(userData: UserData): Promise<void> {
+  public async update(userData: UserLiteral): Promise<void> {
     const user = await this.getUser(userData.id);
     if (user === null) {
       throw new NotFoundError('해당 user 를 찾을 수 없습니다.');
