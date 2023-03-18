@@ -31,4 +31,8 @@ export class Circle {
   public changeCircleName(circleName: CircleName): void {
     this.circleName = circleName;
   }
+
+  public isFull() {
+    return this.members.length >= 29;
+  }
 }

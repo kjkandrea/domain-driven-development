@@ -54,8 +54,7 @@ export class CircleApplicationService {
       throw new NotFoundError('가입할 서클을 찾지 못했음');
     }
 
-    // 서클에 소속된 사용자가 서클장을 포함 30명 이하인지 확인
-    if (circle.members.length >= 29) {
+    if (circle.isFull()) {
       throw new ExistError('사용자 한도 초과');
     }
 
