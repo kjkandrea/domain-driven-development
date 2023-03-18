@@ -7,6 +7,7 @@ import {UserId} from 'user/values';
 import {ExistError, NotFoundError} from 'global/error';
 import {CircleId, CircleName} from 'circle/values';
 import {CircleJoinCommand} from '../../circle/commands/CircleJoinCommand';
+import {CircleFullSpecification} from '../../circle/specifications/CircleFullSpecification';
 
 export class CircleApplicationService {
   private readonly circleFactory: ICircleFactory;
@@ -54,7 +55,12 @@ export class CircleApplicationService {
       throw new NotFoundError('가입할 서클을 찾지 못했음');
     }
 
-    if (circle.isFull()) {
+    const circleFullSpecification = new CircleFullSpecification(
+      this.userRepository
+    );
+
+    const can = await circleFullSpecification.isSatisfiedBy(circle);
+    if (!can) {
       throw new ExistError('사용자 한도 초과');
     }
 
