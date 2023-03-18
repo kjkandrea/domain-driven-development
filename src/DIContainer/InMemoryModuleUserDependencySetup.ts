@@ -1,4 +1,4 @@
-import {UserDependencySetup} from 'serviceProvider/UserDependencySetup';
+import {UserDependencySetup} from 'DIContainer/UserDependencySetup';
 import {Container} from 'inversify';
 import {TYPES} from 'types';
 import {InMemoryUserRepository} from 'infrastructure/users/InMemoryUserRepository';

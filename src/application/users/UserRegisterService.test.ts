@@ -5,7 +5,7 @@ import {UserName, UserId} from 'domain/models/users';
 import {Container} from 'inversify';
 import {TYPES} from 'types';
 import {IUserRepository} from 'infrastructure/users';
-import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
+import {userDependancySetupFactory} from 'DIContainer/userDependancySetupFactory';
 
 describe('UserRegisterService', () => {
   const service = new Container();

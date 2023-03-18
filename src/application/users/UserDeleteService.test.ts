@@ -5,7 +5,7 @@ import {UserDeleteService} from 'application/users/UserDeleteService';
 import {Container} from 'inversify';
 import {TYPES} from 'types';
 import {IUserRepository} from 'domain/models/users';
-import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
+import {userDependancySetupFactory} from 'DIContainer/userDependancySetupFactory';
 
 describe('UserDeleteService', () => {
   const service = new Container();

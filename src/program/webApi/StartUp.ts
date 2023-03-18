@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import {Container} from 'inversify';
-import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
+import {userDependancySetupFactory} from 'DIContainer/userDependancySetupFactory';
 import {UserDeleteService, UserRegisterService} from 'application/users';
 import {TYPES} from 'types';
 import {UserController} from 'program/webApi/UserController';

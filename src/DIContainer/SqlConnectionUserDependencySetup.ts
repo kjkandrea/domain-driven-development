@@ -1,5 +1,5 @@
 import {Container} from 'inversify';
-import {UserDependencySetup} from 'serviceProvider/UserDependencySetup';
+import {UserDependencySetup} from 'DIContainer/UserDependencySetup';
 import {TYPES} from 'types';
 import {UserRepository} from 'infrastructure/users';
 import {UserDeleteService, UserRegisterService} from 'application/users';
