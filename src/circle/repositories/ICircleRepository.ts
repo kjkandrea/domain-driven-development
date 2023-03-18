@@ -1,5 +1,5 @@
-import {Circle} from 'circle/entities/Circle';
-import {CircleId, CircleName} from 'circle/values';
+import {Circle} from 'domain/models/circles/Circle';
+import {CircleId, CircleName} from 'domain/models/circles';
 
 export interface ICircleRepository {
   save(circle: Circle): Promise<void>;

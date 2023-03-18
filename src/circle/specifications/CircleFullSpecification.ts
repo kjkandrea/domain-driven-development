@@ -1,5 +1,5 @@
 import {IUserRepository} from 'user/repositories/UserRepository';
-import {Circle} from '../entities/Circle';
+import {Circle} from 'domain/models/circles/Circle';
 
 export class CircleFullSpecification {
   private readonly userRepository: IUserRepository;

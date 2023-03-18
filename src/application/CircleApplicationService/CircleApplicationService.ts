@@ -5,7 +5,7 @@ import {IUserRepository} from 'user/repositories/UserRepository';
 import {CircleCreateCommand} from 'circle/commands/CircleCreateCommand';
 import {UserId} from 'domain/models/users';
 import {ExistError, NotFoundError} from 'global/error';
-import {CircleId, CircleName} from 'circle/values';
+import {CircleId, CircleName} from 'domain/models/circles';
 import {CircleJoinCommand} from '../../circle/commands/CircleJoinCommand';
 import {CircleFullSpecification} from '../../circle/specifications/CircleFullSpecification';
 

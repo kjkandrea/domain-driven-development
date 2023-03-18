@@ -1,6 +1,6 @@
-import {CircleName} from 'circle/values';
-import {CircleId} from 'circle/values';
-import {User} from 'domain/models/users/User';
+import {CircleName} from '.';
+import {CircleId} from '.';
+import {User} from 'domain/models/users';
 
 export class Circle {
   private circleName: CircleName;
