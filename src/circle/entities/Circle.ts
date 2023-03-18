@@ -34,17 +34,13 @@ export class Circle {
   }
 
   public join(member: User) {
-    if (this.isFull()) {
+    if (this.countMembers() >= 30) {
       throw new ExistError('사용자 한도 초과');
     }
     this.members.push(member);
   }
 
-  public isFull() {
-    return this.countMembers() >= 30;
-  }
-
-  private countMembers() {
+  public countMembers() {
     return this.members.length + 1;
   }
 }

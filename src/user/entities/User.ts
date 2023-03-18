@@ -30,4 +30,8 @@ export class User {
   public changeName(userName: UserName) {
     this.userName = userName;
   }
+
+  public isPremium(): boolean {
+    return Math.random() < 0.5;
+  }
 }
