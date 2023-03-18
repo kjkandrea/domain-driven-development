@@ -4,6 +4,7 @@ import {
 } from 'application/UserApplicationService';
 import {Express} from 'express';
 
+// 계층형 아키텍처의 프레젠테이션 레이어
 export class UserController {
   private readonly userRegisterService: UserRegisterService;
   private readonly userDeleteService: UserDeleteService;
