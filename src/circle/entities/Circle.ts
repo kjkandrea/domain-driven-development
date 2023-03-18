@@ -41,6 +41,10 @@ export class Circle {
   }
 
   public isFull() {
-    return this.members.length >= 29;
+    return this.countMembers() >= 30;
+  }
+
+  private countMembers() {
+    return this.members.length + 1;
   }
 }
