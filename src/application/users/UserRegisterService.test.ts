@@ -4,7 +4,7 @@ import {User} from 'domain/models/users/User';
 import {UserName, UserId} from 'domain/models/users';
 import {Container} from 'inversify';
 import {TYPES} from 'types';
-import {IUserRepository} from 'user/repositories/UserRepository';
+import {IUserRepository} from 'infrastructure/users';
 import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
 
 describe('UserRegisterService', () => {

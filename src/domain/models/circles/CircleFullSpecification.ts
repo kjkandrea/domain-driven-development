@@ -1,4 +1,4 @@
-import {IUserRepository} from 'user/repositories/UserRepository';
+import {IUserRepository} from 'infrastructure/users';
 import {Circle} from '.';
 
 export class CircleFullSpecification {

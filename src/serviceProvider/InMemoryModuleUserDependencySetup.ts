@@ -1,7 +1,7 @@
 import {UserDependencySetup} from 'serviceProvider/UserDependencySetup';
 import {Container} from 'inversify';
 import {TYPES} from 'types';
-import {InMemoryUserRepository} from 'user/repositories/UserRepository/InMemoryUserRepository';
+import {InMemoryUserRepository} from 'infrastructure/users/InMemoryUserRepository';
 import {UserDeleteService, UserRegisterService} from 'application/users';
 import {UserService} from 'domain/services/UserService';
 

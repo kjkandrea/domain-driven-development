@@ -1,4 +1,4 @@
-import {IUserRepository} from 'user/repositories/UserRepository';
+import {IUserRepository} from 'infrastructure/users';
 import {User} from 'domain/models/users';
 import {injectable, inject} from 'inversify';
 import {TYPES} from 'types';

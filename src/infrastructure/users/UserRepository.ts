@@ -1,7 +1,7 @@
 import {User} from 'domain/models/users/User';
 import {UserName, UserId, UserLiteral} from 'domain/models/users';
 import {db} from 'db';
-import type {IUserRepository} from 'user/repositories/UserRepository';
+import type {IUserRepository} from 'infrastructure/users/index';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
 
 import {injectable} from 'inversify';
