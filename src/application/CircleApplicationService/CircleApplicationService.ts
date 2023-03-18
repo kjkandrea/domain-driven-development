@@ -1,6 +1,6 @@
 import {ICircleFactory} from 'circle/factories/CircleFactory';
 import {ICircleRepository} from 'circle/repositories/ICircleRepository';
-import {CircleService} from 'circle/services/CircleService';
+import {CircleService} from 'domain/services/CircleService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {CircleCreateCommand} from 'circle/commands/CircleCreateCommand';
 import {UserId} from 'domain/models/users';

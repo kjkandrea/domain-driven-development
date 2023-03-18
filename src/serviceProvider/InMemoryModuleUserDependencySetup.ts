@@ -6,7 +6,7 @@ import {
   UserDeleteService,
   UserRegisterService,
 } from 'application/UserApplicationService';
-import {UserService} from 'user/services/UserService';
+import {UserService} from 'domain/services/UserService';
 
 export class InMemoryModuleUserDependencySetup extends UserDependencySetup {
   protected setupRepositories(service: Container) {

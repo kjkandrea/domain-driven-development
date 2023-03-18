@@ -1,6 +1,6 @@
 import {UserLiteral, UserId, UserName} from 'domain/models/users';
 import {ExistError, NotFoundError} from 'global/error';
-import {UserService} from 'user/services/UserService';
+import {UserService} from 'domain/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {User} from 'domain/models/users/User';
 import {injectable, inject} from 'inversify';
