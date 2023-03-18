@@ -1,5 +1,5 @@
-import {User} from 'user/entities/User';
-import {UserId, UserName} from 'user/values';
+import {User} from 'domain/models/users/User';
+import {UserId, UserName} from 'domain/models/users';
 
 export interface IUserRepository {
   getAll(): Promise<User[]>;

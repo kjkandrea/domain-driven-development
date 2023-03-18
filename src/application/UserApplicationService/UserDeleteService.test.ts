@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import {User} from 'user/entities/User';
-import {UserName, UserId} from 'user/values';
+import {User} from 'domain/models/users/User';
+import {UserName, UserId} from 'domain/models/users';
 import {UserDeleteService} from 'application/UserApplicationService/UserDeleteService';
 import {Container} from 'inversify';
 import {TYPES} from 'types';

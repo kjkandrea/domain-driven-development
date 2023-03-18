@@ -3,7 +3,7 @@ import {ICircleRepository} from 'circle/repositories/ICircleRepository';
 import {CircleService} from 'circle/services/CircleService';
 import {IUserRepository} from 'user/repositories/UserRepository';
 import {CircleCreateCommand} from 'circle/commands/CircleCreateCommand';
-import {UserId} from 'user/values';
+import {UserId} from 'domain/models/users';
 import {ExistError, NotFoundError} from 'global/error';
 import {CircleId, CircleName} from 'circle/values';
 import {CircleJoinCommand} from '../../circle/commands/CircleJoinCommand';

@@ -1,8 +1,8 @@
-import {UserLiteral, UserId, UserName} from 'user/values';
+import {UserLiteral, UserId, UserName} from 'domain/models/users';
 import {ExistError, NotFoundError} from 'global/error';
 import {UserService} from 'user/services/UserService';
 import {IUserRepository} from 'user/repositories/UserRepository';
-import {User} from 'user/entities/User';
+import {User} from 'domain/models/users/User';
 import {injectable, inject} from 'inversify';
 import {TYPES} from 'types';
 

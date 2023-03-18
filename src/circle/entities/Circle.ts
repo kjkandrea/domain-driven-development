@@ -1,6 +1,6 @@
 import {CircleName} from 'circle/values';
 import {CircleId} from 'circle/values';
-import {User} from 'user/entities/User';
+import {User} from 'domain/models/users/User';
 
 export class Circle {
   private circleName: CircleName;

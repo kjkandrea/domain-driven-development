@@ -1,6 +1,6 @@
-import {UserId} from 'user/values';
+import {UserId} from 'domain/models/users';
 import {IUserRepository} from 'user/repositories/UserRepository';
-import {User} from 'user/entities/User';
+import {User} from 'domain/models/users/User';
 import {injectable, inject} from 'inversify';
 import {TYPES} from 'types';
 

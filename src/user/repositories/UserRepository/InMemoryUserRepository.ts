@@ -1,6 +1,6 @@
 import type {IUserRepository} from 'user/repositories/UserRepository';
-import {User} from 'user/entities/User';
-import {UserName, UserId, UserLiteral} from 'user/values';
+import {User} from 'domain/models/users/User';
+import {UserName, UserId, UserLiteral} from 'domain/models/users';
 import {ObjectValue} from 'global/abstracts/ObjectValue';
 import {injectable} from 'inversify';
 
