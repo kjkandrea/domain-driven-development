@@ -7,7 +7,7 @@ import {UserId} from 'domain/models/users';
 import {ExistError, NotFoundError} from 'global/error';
 import {CircleId, CircleName} from 'domain/models/circles';
 import {CircleJoinCommand} from '../../circle/commands/CircleJoinCommand';
-import {CircleFullSpecification} from '../../circle/specifications/CircleFullSpecification';
+import {CircleFullSpecification} from '../../domain/shared/CircleFullSpecification';
 
 export class CircleApplicationService {
   private readonly circleFactory: ICircleFactory;
