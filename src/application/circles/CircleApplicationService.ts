@@ -2,11 +2,11 @@ import {ICircleFactory} from 'circle/factories/CircleFactory';
 import {ICircleRepository} from 'domain/models/circles';
 import {CircleService} from 'domain/services/CircleService';
 import {IUserRepository} from 'domain/models/users';
-import {CircleCreateCommand} from 'circle/commands/CircleCreateCommand';
+import {CircleCreateCommand} from 'application/circles/CircleCreateCommand';
 import {UserId} from 'domain/models/users';
 import {ExistError, NotFoundError} from 'global/error';
 import {CircleId, CircleName} from 'domain/models/circles';
-import {CircleJoinCommand} from 'circle/commands/CircleJoinCommand';
+import {CircleJoinCommand} from 'application/circles/CircleJoinCommand';
 import {CircleFullSpecification} from 'domain/models/circles';
 
 export class CircleApplicationService {
