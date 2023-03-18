@@ -1,4 +1,4 @@
-import {ICircleFactory} from 'circle/factories/CircleFactory';
+import {ICircleFactory} from 'application/circles/ICircleFactory';
 import {ICircleRepository} from 'domain/models/circles';
 import {CircleService} from 'domain/services/CircleService';
 import {IUserRepository} from 'domain/models/users';
