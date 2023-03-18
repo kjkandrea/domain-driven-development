@@ -1,5 +1,5 @@
 import {User} from 'domain/models/users/User';
-import {UserId, UserName} from 'domain/models/users';
+import {UserId, UserName} from 'domain/models/users/index';
 
 export interface IUserRepository {
   getAll(): Promise<User[]>;

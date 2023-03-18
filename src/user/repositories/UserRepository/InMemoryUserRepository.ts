@@ -1,4 +1,4 @@
-import type {IUserRepository} from 'user/repositories/UserRepository';
+import type {IUserRepository} from 'domain/models/users';
 import {User} from 'domain/models/users/User';
 import {UserName, UserId, UserLiteral} from 'domain/models/users';
 import {ObjectValue} from 'global/abstracts/ObjectValue';

@@ -1,4 +1,4 @@
-import {ICircleRepository} from 'circle/repositories/ICircleRepository';
+import {ICircleRepository} from 'domain/models/circles/ICircleRepository';
 import {Circle} from 'domain/models/circles';
 
 export class CircleService {
