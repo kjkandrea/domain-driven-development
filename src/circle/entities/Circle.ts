@@ -1,6 +1,7 @@
 import {CircleName} from 'circle/values';
 import {CircleId} from 'circle/values';
 import {User} from 'user/entities/User';
+import {ExistError} from '../../global/error';
 
 export class Circle {
   private circleName: CircleName;
@@ -30,6 +31,13 @@ export class Circle {
 
   public changeCircleName(circleName: CircleName): void {
     this.circleName = circleName;
+  }
+
+  public join(member: User) {
+    if (this.isFull()) {
+      throw new ExistError('사용자 한도 초과');
+    }
+    this.members.push(member);
   }
 
   public isFull() {

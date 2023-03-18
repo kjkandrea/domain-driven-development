@@ -58,7 +58,7 @@ export class CircleApplicationService {
       throw new ExistError('사용자 한도 초과');
     }
 
-    circle.members.push(member);
+    circle.join(member);
     return this.circleRepository.save(circle);
   }
 }
