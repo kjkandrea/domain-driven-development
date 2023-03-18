@@ -6,7 +6,7 @@ export class Circle {
   private circleName: CircleName;
   private readonly circleId: CircleId;
   private owner: User;
-  private members: User[];
+  public readonly members: User[];
 
   constructor(
     circleName: CircleName,

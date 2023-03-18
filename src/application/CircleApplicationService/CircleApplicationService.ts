@@ -5,7 +5,8 @@ import {IUserRepository} from 'user/repositories/UserRepository';
 import {CircleCreateCommand} from 'circle/commands/CircleCreateCommand';
 import {UserId} from 'user/values';
 import {ExistError, NotFoundError} from 'global/error';
-import {CircleName} from 'circle/values';
+import {CircleId, CircleName} from 'circle/values';
+import {CircleJoinCommand} from '../../circle/commands/CircleJoinCommand';
 
 export class CircleApplicationService {
   private readonly circleFactory: ICircleFactory;
@@ -38,6 +39,27 @@ export class CircleApplicationService {
     if (isExist) {
       throw new ExistError(`${circle} : 이미 등록된 서클임`);
     }
+    return this.circleRepository.save(circle);
+  }
+
+  public async join(command: CircleJoinCommand) {
+    const memberId = new UserId(command.userId);
+    const member = await this.userRepository.findById(memberId);
+    if (!member) {
+      throw new NotFoundError('서클에 가입할 사용자를 찾지 못했음');
+    }
+    const id = new CircleId(command.circleId);
+    const circle = await this.circleRepository.findById(id);
+    if (!circle) {
+      throw new NotFoundError('가입할 서클을 찾지 못했음');
+    }
+
+    // 서클에 소속된 사용자가 서클장을 포함 30명 이하인지 확인
+    if (circle.members.length >= 29) {
+      throw new ExistError('사용자 한도 초과');
+    }
+
+    circle.members.push(member);
     return this.circleRepository.save(circle);
   }
 }
