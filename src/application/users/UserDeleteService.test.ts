@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import {User} from 'domain/models/users/User';
 import {UserName, UserId} from 'domain/models/users';
-import {UserDeleteService} from 'application/UserApplicationService/UserDeleteService';
+import {UserDeleteService} from 'application/users/UserDeleteService';
 import {Container} from 'inversify';
 import {TYPES} from 'types';
 import {IUserRepository} from 'user/repositories/UserRepository';

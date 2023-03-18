@@ -1,10 +1,7 @@
 import 'reflect-metadata';
 import {Container} from 'inversify';
 import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
-import {
-  UserDeleteService,
-  UserRegisterService,
-} from 'application/UserApplicationService';
+import {UserDeleteService, UserRegisterService} from 'application/users';
 import {TYPES} from 'types';
 import {UserController} from 'program/webApi/UserController';
 import * as express from 'express';

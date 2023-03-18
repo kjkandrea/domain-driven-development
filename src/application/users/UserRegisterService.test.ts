@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {UserRegisterService} from 'application/UserApplicationService/UserRegisterService';
+import {UserRegisterService} from 'application/users/UserRegisterService';
 import {User} from 'domain/models/users/User';
 import {UserName, UserId} from 'domain/models/users';
 import {Container} from 'inversify';

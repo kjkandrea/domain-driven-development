@@ -2,10 +2,7 @@ import {Container} from 'inversify';
 import {UserDependencySetup} from 'serviceProvider/UserDependencySetup';
 import {TYPES} from 'types';
 import {UserRepository} from 'user/repositories/UserRepository';
-import {
-  UserDeleteService,
-  UserRegisterService,
-} from 'application/UserApplicationService';
+import {UserDeleteService, UserRegisterService} from 'application/users';
 import {UserService} from 'domain/services/UserService';
 
 export class SqlConnectionUserDependencySetup extends UserDependencySetup {

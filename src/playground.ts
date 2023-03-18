@@ -1,10 +1,7 @@
 import 'reflect-metadata';
 import {Container} from 'inversify';
 import {userDependancySetupFactory} from 'serviceProvider/userDependancySetupFactory';
-import {
-  UserRegisterService,
-  UserDeleteService,
-} from 'application/UserApplicationService';
+import {UserRegisterService, UserDeleteService} from 'application/users';
 import {TYPES} from 'types';
 
 export async function main() {

@@ -1,7 +1,4 @@
-import {
-  UserDeleteService,
-  UserRegisterService,
-} from 'application/UserApplicationService';
+import {UserDeleteService, UserRegisterService} from 'application/users';
 import {Express} from 'express';
 
 // 계층형 아키텍처의 프레젠테이션 레이어
